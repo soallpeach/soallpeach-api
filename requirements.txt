@@ -1,3 +1,1 @@
-django==3
-mysqlclient
-django-mysql
+django==3.0.3
