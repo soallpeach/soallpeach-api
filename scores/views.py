@@ -1,4 +1,5 @@
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -7,6 +8,8 @@ from scores.serializers import ScoreSerializer
 
 
 class ScoreView(APIView):
+    permission_classes = (IsAuthenticated,)  # <-- And here
+
     def get(self, request):
         return Response(ScoreSerializer(instance=Score.objects.all(), many=True).data)
 
