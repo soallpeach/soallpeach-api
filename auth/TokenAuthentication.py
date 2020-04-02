@@ -10,12 +10,15 @@ class TokenAuthentication(BaseAuthentication):
     HTTP Basic authentication against username/password.
     """
     expected_token = settings.AUTH.get('SECRET_TOKEN')
+    enabled = settings.AUTH.get('ENABLED')
 
     def authenticate(self, request):
         """
         Returns a `User` if a correct username and password have been supplied
         using HTTP Basic authentication.  Otherwise returns `None`.
         """
+        if not self.enabled:
+            return User(), None
         auth = get_authorization_header(request).split()
 
         if not auth or auth[0].lower() != b'token':
