@@ -120,9 +120,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'auth.TokenAuthentication.TokenAuthentication'
     ]
+}
+
+AUTH = {
+    'SECRET_TOKEN': os.getenv('SECRET_TOKEN', '123'),
+    'ENABLED': True
 }

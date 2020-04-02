@@ -2,13 +2,14 @@ from django.contrib.auth.models import User
 from rest_framework import exceptions
 from rest_framework.authentication import BaseAuthentication, get_authorization_header
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 
 class TokenAuthentication(BaseAuthentication):
     """
     HTTP Basic authentication against username/password.
     """
-    www_authenticate_realm = 'api'
+    expected_token = settings.AUTH.get('SECRET_TOKEN')
 
     def authenticate(self, request):
         """
@@ -28,7 +29,7 @@ class TokenAuthentication(BaseAuthentication):
             raise exceptions.AuthenticationFailed(msg)
 
         token = auth[1]
-        if token == b'123':
+        if token.decode('utf-8') == self.expected_token:
             return User(), None
         raise exceptions.AuthenticationFailed(_('Invalid token'))
 
