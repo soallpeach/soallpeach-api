@@ -1,0 +1,26 @@
+kind: ExternalService
+name: soallpeach-api
+spec:
+  image_pull_policy: Always
+  port: 80
+  source:
+    context: .
+    media_path: ''
+    project_type: django
+    python_version: '3.7'
+    static_path: ''
+    wsgi: api.wsgi
+  env:
+    - name: DB_NAME
+      value: "soallpeach"
+    - name: MYSQL_HOST
+      value: "soallpeach-db"
+    - name: DB_USERNAME
+      value: "${DB_USERNAME}"
+      hidden: true
+    - name: DB_PASSWORD
+      value: "${DB_PASSWORD}"
+      hidden: true
+    - name: SECRET_TOKEN
+        value: "${SECRET_TOKEN}"
+        hidden: true
