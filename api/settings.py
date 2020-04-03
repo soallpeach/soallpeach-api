@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3n=-yt5a&9-#c)wj-a(01n17rx-qjcm*ih)l9y4k$*17ekz)wt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'true').lower() in ['true', '1', 'y', 'True']
 
 ALLOWED_HOSTS = ['*']
 
@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'soallpeach',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'NAME': os.getenv('DB_NAME', 'soallpeach'),
+        'USER': os.getenv('DB_USERNAME', 'root'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'root'),
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
         'PORT': 3306
     }
 }
