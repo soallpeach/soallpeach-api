@@ -1,0 +1,12 @@
+kind: ManagedService
+name: soallpeach-db
+spec:
+  service_name: mysql
+  version: 5.7
+  parameters:
+    - name: phpmyadmin_enabled
+      value: true
+    - name: mysql_root_password
+      value: root
+  resources:
+    memory: 200Mi
