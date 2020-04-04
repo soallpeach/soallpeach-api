@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Latest Scores</title>
+</head>
+<table>
+    <thead></thead>
+    {% for score in scores %}
+        <tr>
+            <td>
+                {{ score.nickname }}
+            </td>
+            <td>
+                {{ score.state }}
+            </td>
+            <td>
+                {#            {{ score.result.get }}#}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</html>
