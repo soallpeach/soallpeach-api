@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django_mysql.models.functions import JSONExtract
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -26,5 +27,8 @@ class ScoreView(APIView):
 class ScoreTableView(View):
     def get(self, request):
         latest_run_score = Score.objects.latest('run_id')
-        latest_scores = Score.objects.filter(run_id=latest_run_score.run_id).all()
+        latest_scores = Score.objects.filter(run_id=latest_run_score.run_id).order_by(
+            JSONExtract('result', '$.run_result.duration').asc(nulls_last=True)
+        ).all()
+
         return render(request, 'scores.html', {'scores': latest_scores})

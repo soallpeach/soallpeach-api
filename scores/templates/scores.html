@@ -13,7 +13,11 @@
                 {{ score.state }}
             </td>
             <td>
-                {#            {{ score.result.get }}#}
+                {% if score.state == 'FAILED' %}
+                    {{ score.result.message }}
+                {% elif score.state == 'PASSED' %}
+                    {{ score.result.run_result.duration }}
+                {% endif %}
             </td>
         </tr>
     {% endfor %}
