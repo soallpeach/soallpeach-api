@@ -8,3 +8,4 @@ class Score(Model):
     created = models.DateTimeField(auto_now_add=True)
     run_id = models.IntegerField()
     result = JSONField()
+    state = models.CharField(max_length=30, choices=[('PASSED', 'PASSED'), ('FAILED', 'FAILED')])
