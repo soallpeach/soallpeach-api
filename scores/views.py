@@ -34,6 +34,12 @@ class ScoreTableView(View):
         return render(request, 'scores.html', {'scores': latest_scores})
 
 
+class ScoreDetailView(APIView):
+    def get(self, request, score_id: int):
+        score = Score.objects.filter(id=score_id).first()
+        return Response(ScoreSerializer(instance=score).data)
+
+
 class PrimeChallengeView(View):
     def get(self, request):
         return render(request, 'challenges/prime.html')
