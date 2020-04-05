@@ -37,3 +37,8 @@ class ScoreTableView(View):
 class PrimeChallengeView(View):
     def get(self, request):
         return render(request, 'challenges/prime.html')
+
+
+class ParticipationView(View):
+    def get(self, request):
+        return render(request, 'participation.html')
