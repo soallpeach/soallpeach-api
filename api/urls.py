@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.urls import path
 
-from scores.views import ScoreView, ScoreTableView, PrimeChallengeView, ParticipationView
+from scores.views import ScoreView, ScoreTableView, PrimeChallengeView, ParticipationView, ScoreDetailView
 
 urlpatterns = [
+    path('scores/<int:score_id>', ScoreDetailView.as_view()),
     path('scores', ScoreView.as_view()),
     path('challenges/prime', PrimeChallengeView.as_view()),
     path('participation', ParticipationView.as_view()),
