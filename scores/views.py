@@ -32,3 +32,8 @@ class ScoreTableView(View):
         ).all()
 
         return render(request, 'scores.html', {'scores': latest_scores})
+
+
+class PrimeChallengeView(View):
+    def get(self, request):
+        return render(request, 'challenges/prime.html')
