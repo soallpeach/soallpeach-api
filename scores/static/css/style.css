@@ -17,8 +17,6 @@
   font-family: "Estedad";
 }
 .body {
-  /* background: linear-gradient(110deg, #659dbd 40%, rgba(0, 0, 0, 0) 30%),
-    radial-gradient(farthest-corner at 0% 0%, #8d8741 70%, #659dbd 70%); */
   background-color: #e3e2df;
 }
 .header {
