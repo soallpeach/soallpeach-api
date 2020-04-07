@@ -1,53 +1,80 @@
+{% load static %}
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
+            rel="stylesheet"
+    />
+    <link href="{% static "font/_fonts.scss" %}" />
+
     <title>Latest Scores</title>
 </head>
 
-<a href="participation">نحوه شرکت در چالش</a>
-<a href="challenges/prime">چالش اعداد اول</a>
-<div style="direction: rtl;">
-    <h1>
-        #سوال_پیچ
-    </h1>
 
-    <p>
-        سوال‌پیچ یه پروژه است برای تمرین و مسابقه برنامه‌نویسی! بزرگ‌ترین تفاوت سوال‌پیچ با بقیه مسابقات اینه که تو
-        سوال‌پیچ تمرکز شما فقط روی نوشتن یک تابع یا الگوریتم نیست. چالش‌های سوال‌پیچ شما رو با جنبه‌های مختلف یک پروژه
-        واقعی مثل استفاده از ابزارهای بیلد و دیپلوی و کار تیمی آشنا میکنه، و همینطور با چالش‌های سعی میکنه شما رو با
-        مواردی چون کار با IO و پروتکل‌های شبکه مختلف درگیر کنه.
-    </p>
+<body class="body">
 
-    <h2>
-        سوال‌پیچ چی نیست؟
-    </h2>
+<nav class="navbar navbar-expand-lg nav-color flex-grow-1 text-right">
 
-    <p>
-        سوال‌پیچ پلتفرم آموزشی صرف نیست! در سوال‌پیچ کسی به طور مستقیم چیزی به شما یاد نمیده، در سوال‌پیچ فقط چالش‌ها
-        مطرح میشن و شرکت‌کننده‌ها سعی میکنن برنامه‌ای بنویسن که چالش رو حل کنه. شما به کد‌ تمام شرکت‌کننده‌ها دسترسی
-        دارید و میتونید اونها رو توی اینترنت پیدا کنید و بخونید تا بیشتر با راه‌حل و زبانی که استفاده شده آشنا بشید. پس
-        اگر خودتون بخواید و مشارکت زیاد باشه احتمالا خیلی چیزها یاد میگیرید.
-        همینطور تو توییتر میتونید با هشتگ #سوال_پیچ در مورد چالش‌ها صحبت کنید و با دوستانتون همفکری کنید.
+    <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent">
+        <span class="navbar-text inline-title text-white">سوال پیچ </span>
+        <ul class="navbar-nav ml-auto flex-nowrap">
+            <li class="nav-item ">
+                <a class="nav-link text-white" href="#">چالش‌ها </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">شرکت در چالش</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="#"> خانه<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
 
-        سوال‌پیچ تازه اول راهشه و نیاز به حمایت و نظرات و انتقادات شما داره. پس حتما اونا رو با ما در میون بذارید تا
-        بتونیم پروژه‌ آزاد موفق رو با کمک همدیگه پیش ببریم.
-    </p>
+    </div>
+</nav>
+<h1 class="header text-center font-weight-bold">سوال_پیچ</h1>
+<p class="p1"> سوال‌پیچ یه پروژه است برای تمرین و مسابقه برنامه‌نویسی! بزرگ‌ترین تفاوت سوال‌پیچ با بقیه مسابقات اینه که
+    تو
+    سوال‌پیچ تمرکز شما فقط روی نوشتن یک تابع یا الگوریتم نیست. چالش‌های سوال‌پیچ شما رو با جنبه‌های مختلف یک پروژه
+    واقعی مثل استفاده از ابزارهای بیلد و دیپلوی و کار تیمی آشنا میکنه، و همینطور با چالش‌های سعی میکنه شما رو با
+    مواردی چون کار با IO و پروتکل‌های شبکه مختلف درگیر کنه
+</p>
+<h2 class="header text-center font-weight-bold">سوال‌پیچ چی نیست؟</h2>
+<p class="p2">
+    سوال‌پیچ پلتفرم آموزشی صرف نیست! در سوال‌پیچ کسی به طور مستقیم چیزی به
+    شما یاد نمیده، در سوال‌پیچ فقط چالش‌ها مطرح میشن و شرکت‌کننده‌ها سعی
+    میکنن برنامه‌ای بنویسن که چالش رو حل کنه. شما به کد‌ تمام شرکت‌کننده‌ها
+    دسترسی دارید و میتونید اونها رو توی اینترنت پیدا کنید و بخونید تا بیشتر
+    با راه‌حل و زبانی که استفاده شده آشنا بشید. پس اگر خودتون بخواید و
+    مشارکت زیاد باشه احتمالا خیلی چیزها یاد میگیرید. همینطور تو توییتر
+    میتونید با هشتگ #سوال_پیچ در مورد چالش‌ها صحبت کنید و با دوستانتون
+    همفکری کنید. سوال‌پیچ تازه اول راهشه و نیاز به حمایت و نظرات و انتقادات
+    شما داره. پس حتما اونا رو با ما در میون بذارید تا بتونیم پروژه‌ آزاد
+    موفق رو با کمک همدیگه پیش ببریم.
+</p>
 </div>
+<div class="table-wraper">
+    <table class="table table-striped table-dark table-hover">
+        <thead>
+        <tr class="bg-danger">
+            <th scope="col">#</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Status</th>
+            <th scope="col">Seconds</th>
+        </tr>
+        </thead>
 
-
-<table>
-    <thead>
-    <th>
-        Nickname
-    </th>
-    <th>
-        State
-    </th>
-    <th>
-        Seconds
-    </th>
-    </thead>
-    {% for score in scores %}
+        <tbody>
+        {% for score in scores %}
         <tr>
+            <td>1</td>
             <td>
                 {{ score.nickname }}
             </td>
@@ -56,12 +83,16 @@
             </td>
             <td>
                 {% if score.state == 'FAILED' %}
-                    {{ score.result.message }}
+                {{ score.result.message }}
                 {% elif score.state == 'PASSED' %}
-                    {{ score.result.run_result.duration }}
+                {{ score.result.run_result.duration }}
                 {% endif %}
             </td>
+
         </tr>
-    {% endfor %}
-</table>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
 </html>
