@@ -45,3 +45,15 @@ a.nav-link {
 .nav-color {
   background-color: #4056a1;
 }
+
+@font-face {
+  font-family: Estedad;
+  src: url("/static/font/Estedad-Medium.woff2") format("woff2");
+  font-weight: Normal;
+}
+
+@font-face {
+  font-family: Estedad;
+  src: url("/static/font/Estedad-Bold.woff2") format("woff2");
+  font-weight: bold;
+}
