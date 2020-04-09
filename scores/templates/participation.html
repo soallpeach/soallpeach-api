@@ -1,58 +1,109 @@
+{% load static %}
 <html>
-<title>
-    نحوه شرکت در چالش‌ها
-</title>
+<head>
+    <title>Latest Scores</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
+            rel="stylesheet"
+    />
+    <link href="{% static "font/_fonts.scss" %}" />
+</head>
 
-<body style="direction: rtl;">
 
-<p>
+<body class="body">
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar nav-color sticky-top ">
+    <span class="navbar-brand navbar-text inline-title text-white p-2">سوال پیچ </span>
+   <ul class="navbar-nav ml-md-auto flex-row-reverse">
+            <li class="nav-item">
+                <a class="nav-link " href="/">خانه </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="participation">
+                شرکت در چالش
+             <span class="sr-only">(current)</span>   </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#">چالش‌ها</a>
+            </li>
+        </ul>
+</header>
+
+<h1 class="header text-center font-weight-bold ">چگونه شروع کنیم؟ </h1>
+<h2 class="step-challenge text-right font-weight-bold ">گام اول </h2>
+<p class="paraghraph-center text-right">
     برای شرکت در چالش کافی است که شما یک Git repository روی Github, Gitlab و یا هر سرویس‌دهنده دیگه‌ای که باهاش راحتید
     بسازید. تنها شرط اینه که repository باید به صورت public در دسترس باشه.
 
 </p>
-<p>
-    اگر با Git آشنایی ندارید اولین چالش شما جست و جو در مورد نحوه ساختن یه Repository و همینطور نحوه استفده از Git خواهد
+<p class="paraghraph-center text-right ">
+    اگر با Git آشنایی ندارید اولین چالش شما جست و جو در مورد نحوه ساختن یه Repository و همینطور نحوه استفاده از Git خواهد
     بود. ‌با جست و جو توی اینترنت می‌تونید کلی مطالب مرتبط با این موضوع پیدا کنید.
 </p>
-
-<p>
+<h3 class="step-challenge text-right font-weight-bold">گام دوم</h3>
+<p class="paraghraph-center text-right">
     https://github.com/soallpeach/onboarding
     مرحله بعدی ساخت یک pull request به onboarding repository و معرفی repository هست که ساختید! برای این کار لازمه که به
     فایل participants.yml اطلاعات مربوط به خودتون رو اضافه کنید. مثال زیر نشون میده که هر entry چه فرمتی
     داره:
-
 </p>
-<p style="direction: ltr;white-space: pre-wrap;">
-- nickname: soallpeach
-  profile: https://github.com/soallpeach
-  repository: https://github.com/soallpeach/sample
-</p>
+<div class="table-wraper table-width">
+<table class="table table-striped table-light table-hover">
+      <thead>
+        </thead>
+  <tbody class="table-secondary">
+    <tr>
+      <th scope="row">1</th>
+      <td>nickname :</td>
+      <td>soallpeach</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>profile : </td>
+      <td>https://github.com/soallpeach</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>repository :</td>
+      <td> https://github.com/soallpeach/sample</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h4 class="step-challenge text-right font-weight-bold">گام سوم </h4>
+<p class="paraghraph-center text-right">
 
-
-<p>
-    بعد از اینکه repository رو ایجاد کردید برای هر کدام از چالش‌های سوال‌پیچ نیازه که شما یک پوشه داخل repository خودتون
+  بعد از اینکه repository رو ایجاد کردید برای هر کدام از چالش‌های سوال‌پیچ نیازه که شما یک پوشه داخل repository خودتون
     ایجاد کنید. برای مثل اگر اسم چالش prime باشه شما می‌بایست یک پوشه با این نام داخل repository خودتون ایجاد کنید.
 
 
     داخل پوشه هرچالش تمام فایل‌هایی که پروژه شما برای اجرا نیاز داره رو باید قرار بدید. مواردی مثل خود کد شما، تنظیمات
     build tools (اگر استفاده می‌کنید)، تست‌ها و …
 </p>
-
-<p>
+<h5 class="step-challenge text-right font-weight-bold">گام چهارم </h5>
+<p class="paraghraph-center text-right">
 
     در کنار این‌ها شما نیاز دارید که یک فایل Dockerfile هم ایجاد کنید که کارش ساخت یک ایمیج از برنامه شما است. سوال‌پیچ
     با استفاده از این فایل از پروژه شما یک ایمیج میسازه و اون رو اجرا میکنه تا چک کنه که آیا برنامه شما با توجه به
     ورودی‌ها درست عمل میکنه یا خیر!
 </p>
 
-<p>
-    در هر چالش توضیح داده شده که ورودی‌ها به چه شکل باید توسط برناهه گرفته بشن. مثلا ممکنه ورودی که فایل باشه، یک رشته
+<h6 class="step-challenge text-right font-weight-bold">و در آخر </h6>
+<p class="paraghraph-center text-right">
+
+    در هر چالش توضیح داده شده که ورودی‌ها به چه شکل باید توسط برنامه گرفته بشن. مثلا ممکنه ورودی که فایل باشه، یک رشته
     باشه که از طریق stdin به برنامه شما ارسال میشه و یا مجموعه‌ای از درخواست‌های http باشه که به برنامه شما ارسال میشه.
+
 </p>
-<p>
-    برای شروع توضیحات اولین چالش سوال‌پیچ رو که در مورد اعداد اوله رو از اینجا بخونید و در چالش شرکت کنید، با هم میتونیم
-    کلی چیز جدید یاد بگیریم و از زمانی که داریم استفاده مناسب بکنیم :)‌
+<p class="paraghraph-center text-center font-weight-bold">
+    برای شروع، توضیحات اولین چالش سوال‌پیچ در مورد اعداد اول رو از اینجا بخونید و در چالش شرکت کنید، با هم میتونیم
+    کلی چیز جدید یاد بگیریم و از زمانی که داریم استفاده مناسب بکنیم.‌
 </p>
 </body>
-
 </html>
