@@ -1,86 +1,96 @@
 .table-wraper {
-  width: 30%;
-  margin: 0 auto;
-}
-.table.table-striped.table-dark {
-  box-shadow: 5px 10px 18px #888888;
+    width: 30%;
+    margin: 0 auto;
 }
 
-.paraghraph-center{
-  font-size: 1.1rem;
-  margin: 0 auto;
-  width: 60%;
-  padding-bottom: 10px;
-  color: black;
-  font-family: "Estedad";
-  direction: rtl;
-  padding-top: 25px;
+.table.table-striped.table-dark {
+    box-shadow: 5px 10px 18px #888888;
 }
+
+.paragraph-center {
+    font-size: 1.1rem;
+    margin: 0 auto;
+    width: 60%;
+    padding-bottom: 10px;
+    color: black;
+    font-family: "Estedad";
+    direction: rtl;
+    padding-top: 25px;
+}
+
 .body {
 
-  background-color: #e3e2df;
+    background-color: #e3e2df;
 }
+
 .header {
-  margin-bottom: 30px;
-  margin-top: 20px;
-  color: #1f2605;
-  font-family: "Estedad";
-  font-weight: bold;
-  margin-right: 15px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    color: #1f2605;
+    font-family: "Estedad";
+    font-weight: bold;
+    margin-right: 15px;
 }
-.paraghraph-right{
-  font-size: 0.8 rem;
-  margin-right: 25px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  color: black;
-  font-family: "Estedad";
-  direction: rtl;
-  margin-left : 50px;
+
+.paraghraph-right {
+    font-size: 0.8rem;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    color: black;
+    font-family: "Estedad";
+    direction: rtl;
+    margin-left: 50px;
 }
+
 a.nav-link {
-  color: #1f2605;
-  font-weight: bold;
-  font-size: 20px;
-  font-family: "Estedad";
+    color: #1f2605;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Estedad";
 }
+
 .inline-title {
-  flex-flow: row;
-  font-family: "Estedad";
-  font-size: 25px;
-  font-weight: bold;
-  padding-right: 20px;
+    flex-flow: row;
+    font-family: "Estedad";
+    font-size: 25px;
+    font-weight: bold;
+    padding-right: 20px;
 }
+
 .nav-color {
-  background-color: #4056a1;
+    background-color: #4056a1;
 }
 
 @font-face {
-  font-family: Estedad;
-  src: url("/static/font/Estedad-Medium.woff2") format("woff2");
-  font-weight: Normal;
+    font-family: Estedad;
+    src: url("/static/font/Estedad-Medium.woff2") format("woff2");
+    font-weight: Normal;
 }
 
 @font-face {
-  font-family: Estedad;
-  src: url("/static/font/Estedad-Bold.woff2") format("woff2");
-  font-weight: bold;
+    font-family: Estedad;
+    src: url("/static/font/Estedad-Bold.woff2") format("woff2");
+    font-weight: bold;
 }
+
 .step-challenge {
-  color: #1f2605;
-  font-family: "Estedad";
-  font-weight: bold;
-margin: 0 auto;
-width: 60%;
-padding-top: 20px;
-padding-bottom:20px;
+    color: #1f2605;
+    font-family: "Estedad";
+    font-weight: bold;
+    margin: 0 auto;
+    width: 60%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
 }
-.table-width{
-width: 30%;
-margin: 0 auto;
+
+.table-width {
+    width: 30%;
+    margin: 0 auto;
 }
+
 .gist-code {
-margin-left:25%;
-width: 350px;
+    margin-left: 25%;
+    width: 350px;
 }
