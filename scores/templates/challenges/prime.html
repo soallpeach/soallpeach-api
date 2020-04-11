@@ -1,61 +1,79 @@
+{% load static %}
 <html>
-<title>
-    چالش اعداد اول
-</title>
+<head>
+    <title>Latest Scores</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
+            rel="stylesheet"
+    />
 
-<body style="direction: rtl;">
+</head>
+
+
+<body class="body">
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar nav-color sticky-top ">
+    <span class="navbar-brand navbar-text inline-title text-white p-2">سوال پیچ </span>
+   <ul class="navbar-nav ml-md-auto flex-row-reverse">
+            <li class="nav-item">
+                <a class="nav-link " href="/">خانه </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/participation">
+                شرکت در چالش
+               </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="challenges/prime"> چالش‌ها <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+</header>
+
+<body>
+<h1 class="header text-center font-weight-bold ">چالش عدد اول </h1>
 <div>
-    <p>
+    <p class="paraghraph-center text-right">
         این چالش بیشتر برای دست‌گرمیه و اینکه شما اطمینان پیدا کنید که تونستید به درستی در مسابقه شرکت کنید.
         در این چالش به برنامه شما مسیر یک فایل ارسال میشه، در این فایل هر سطر حاوی یک عدده. برنامه شما باید به ازای هر
         خط در
-        ورودی اگر عدد اول باشه عدد ۱ و در غیر این صورت عدد ۰ را بنویسید.
+        ورودی اگر عدد اول باشه عدد ۱ و در غیر این صورت عدد ۰ را بنویسه.
 
     </p>
-    <p>
+    <p class="paraghraph-center text-right">
         برای مثال اگر فایل ورودی به این شکل باشد:
     </p>
 
 </div>
-<div style="direction: ltr; background-color: gray; width: 100px; text-align: left; float:left;">
-    3
-    <br>
-    7
-    <br>
-    9
-    <br>
-    4
-    <br>
-    2
+<div class="gist-code ">
+   <script src="https://gist.github.com/arezoo-frj-87/41c3d4aeb11c25d4d62508dd8f2f08bf.js"></script>
 </div>
 <div>
-    <p>
+    <p class="paraghraph-center text-right">
         مقدار چاپ شده در خروجی باید به این شکل باشد:
-    </p>
-    <div style="direction: ltr; background-color: gray; width: 100px; text-align: left; float:left;">
-        1
-        <br>
-        1
-        <br>
-        0
-        <br>
-        0
-        <br>
-        1
+   <div class="gist-code">
+
+    <script src="https://gist.github.com/arezoo-frj-87/5d9595a921bd16baa2c0fc1779753662.js"></script>
     </div>
 
-    <p>
+    <p class="paraghraph-center text-right">
         برای شرکت در این چالش، پوشه‌ای با نام prime در repository خودتون ایجاد کنید و فایل‌های برنامه و Dockerfile رو
         داخل
         این
         پوشه قرار بدید.
     </p>
-    <p>
+    <p class="paraghraph-center text-right">
 
-        در این لینک میتونید پیاده‌سازی این برنامه و همینطور Dockerfile رو مشاهده کنید.
-        https://github.com/soallpeach/sample/tree/master/prime
+        در این
+        <a href="https://github.com/soallpeach/sample/tree/master/prime">لینک </a>
+        میتونید پیاده‌سازی این برنامه و همینطور Dockerfile رو مشاهده کنید.
     </p>
-</div>
+
 </body>
 
 </html>
