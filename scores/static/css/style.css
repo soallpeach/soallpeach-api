@@ -21,6 +21,8 @@
 .body {
 
     background-color: #e3e2df;
+    margin:0px;
+
 }
 
 .header {
@@ -29,7 +31,7 @@
     color: #1f2605;
     font-family: "Estedad";
     font-weight: bold;
-    margin-right: 15px;
+
 }
 
 .paraghraph-right {
@@ -91,6 +93,7 @@ a.nav-link {
 }
 
 .gist-code {
-    margin-left: 25%;
     width: 350px;
+   margin: 0 auto;
+
 }
