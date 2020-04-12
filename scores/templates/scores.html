@@ -1,9 +1,9 @@
 {% load static %}
 <html>
 <head>
-     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Latest Scores</title>
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
     <link
@@ -63,6 +63,16 @@
 </p>
 </div>
 <br/>
+<p class="paragraph-center text-center" style="color: indigo">
+    این جدول آخرین بار،
+
+    <b>
+        {{ time_passed_from_last_run }}
+        دقیقه
+    </b>
+    گذشته بروزرسانی شده است.
+</p>
+
 <div class="table-wraper  table-responsive-sm">
     <table class="table table-striped table-dark table-hover">
         <thead>
