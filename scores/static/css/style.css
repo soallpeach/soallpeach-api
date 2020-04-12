@@ -21,7 +21,7 @@
 .body {
 
     background-color: #e3e2df;
-    margin:0px;
+    margin: 0px;
 
 }
 
@@ -94,6 +94,10 @@ a.nav-link {
 
 .gist-code {
     width: 350px;
-   margin: 0 auto;
+    margin: 0 auto;
+}
 
+.last-update-container {
+    font-family: "Estedad";
+    direction: rtl;
 }

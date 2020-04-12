@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 
 from scores.models import Score
 from scores.serializers import ScoreSerializer
+from scores.util import convert_ms_to_minutes
 
 
 class ScoreView(APIView):
@@ -26,12 +27,16 @@ class ScoreView(APIView):
 
 class ScoreTableView(View):
     def get(self, request):
-        latest_run_score = Score.objects.latest('run_id')
-        latest_scores = Score.objects.filter(run_id=latest_run_score.run_id).order_by(
+        latest_run_score: Score = Score.objects.latest('run_id')
+        run_id = latest_run_score.run_id
+        time_passed_from_last_run = convert_ms_to_minutes(run_id)
+
+        latest_scores = Score.objects.filter(run_id=run_id).order_by(
             JSONExtract('result', '$.run_result.duration').asc(nulls_last=True)
         ).all()
 
-        return render(request, 'scores.html', {'scores': latest_scores})
+        return render(request, 'scores.html',
+                      {'scores': latest_scores, 'time_passed_from_last_run': time_passed_from_last_run})
 
 
 class ScoreDetailView(APIView):
