@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.urls import path
 from django.conf import settings
-from scores.views import ScoreView, ScoreTableView, PrimeChallengeView, ParticipationView, ScoreDetailView
+from scores.views import ScoreView, ScoreTableView, PrimeChallengeView, ParticipationView, ScoreDetailView, RoundView, \
+    RoundDetailView
 from django.conf.urls.static import static
-urlpatterns = [
-    path('scores/<int:score_id>', ScoreDetailView.as_view()),
-    path('scores', ScoreView.as_view()),
-    path('challenges/prime', PrimeChallengeView.as_view()),
-    path('participation', ParticipationView.as_view()),
-    path('', ScoreTableView.as_view()),
 
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = [
+                  path('challenges/<str:challenge_name>/rounds/<str:id>', RoundDetailView.as_view()),
+                  path('challenges/<str:challenge_name>/rounds', RoundView.as_view()),
+                  path('scores/<int:score_id>', ScoreDetailView.as_view()),
+                  path('scores', ScoreView.as_view()),
+                  path('challenges/prime', PrimeChallengeView.as_view()),
+                  path('participation', ParticipationView.as_view()),
+                  path('', ScoreTableView.as_view()),
+
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
