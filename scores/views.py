@@ -51,11 +51,10 @@ class ScoreView(APIView):
 
 class ScoreTableView(View):
     def get(self, request):
-        latest_run_score: Score = Score.objects.latest('run_id')
-        run_id = latest_run_score.run_id
-        time_passed_from_last_run = convert_ms_to_minutes((time.time() - run_id) * 1000)
+        latest_round = Round.objects.filter(state='FINISHED').last()
+        time_passed_from_last_run = convert_ms_to_minutes((time.time() - latest_round.updated.timestamp()) * 1000)
 
-        latest_scores = Score.objects.filter(run_id=run_id).order_by(
+        latest_scores = Score.objects.filter(round_id=latest_round.id).order_by(
             JSONExtract('result', '$.run_result.duration').asc(nulls_last=True)
         ).all()
 
