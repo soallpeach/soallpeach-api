@@ -3,10 +3,12 @@ from django_mysql.models import JSONField, Model
 
 
 class Round(Model):
+    id = models.IntegerField(primary_key=True)
     challenge_name = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     state = models.CharField(max_length=30, choices=[('STARTED', 'STARTED'), ('FINISHED', 'FINISHED')],
-                             default='FINISHED')
+                             default='STARTED')
+    updated = models.DateTimeField(auto_now=True)
 
 
 class Score(Model):
