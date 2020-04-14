@@ -106,7 +106,15 @@
                     {{ score.nickname }}
                 </td>
                 <td>
+                    {% if score.state == 'FAILED' %}
+                        <span style="color: greenyellow">
                     {{ score.state }}
+                        </span>
+                    {% else %}
+                        <span style="color: greenyellow">
+                    {{ score.state }}
+                        </span>
+                    {% endif %}
                 </td>
                 <td>
                     {% if score.state == 'FAILED' %}
