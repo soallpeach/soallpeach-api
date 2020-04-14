@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
 <h1 class="header  text-center font-weight-bold">سوال‌پیچ</h1>
 <p class="paragraph-center text-center"> سوال‌پیچ یه پروژه است برای تمرین و مسابقه برنامه‌نویسی! بزرگ‌ترین تفاوت
     سوال‌پیچ با بقیه مسابقات اینه که تو
@@ -28,6 +27,16 @@
 </p>
 </div>
 <br/>
+<p class="paragraph-center text-center" style="color: indigo">
+    این جدول آخرین بار،
+
+    <b>
+        {{ time_passed_from_last_run }}
+        دقیقه
+    </b>
+    گذشته بروزرسانی شده است.
+</p>
+
 <div class="table-wraper  table-responsive-sm">
     <table class="table table-striped table-dark table-hover">
         <thead>
@@ -36,6 +45,7 @@
             <th scope="col">Nickname</th>
             <th scope="col">Status</th>
             <th scope="col">Seconds</th>
+            <th scope="col"></th>
         </tr>
         </thead>
 
@@ -47,7 +57,15 @@
                     {{ score.nickname }}
                 </td>
                 <td>
+                    {% if score.state == 'PASSED' %}
+                        <span style="color: greenyellow">
                     {{ score.state }}
+                        </span>
+                    {% else %}
+                        <span style="color: orange">
+                    {{ score.state }}
+                        </span>
+                    {% endif %}
                 </td>
                 <td>
                     {% if score.state == 'FAILED' %}
@@ -56,7 +74,9 @@
                         {{ score.result.run_result.duration }}
                     {% endif %}
                 </td>
-
+                <td>
+                    <a href="/scores/{{ score.id }}" style="color: cyan">Details</a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

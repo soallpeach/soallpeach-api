@@ -9,4 +9,4 @@ spec:
     - name: mysql_root_password
       value: root
   resources:
-    memory: 200Mi
+    memory: 400Mi
