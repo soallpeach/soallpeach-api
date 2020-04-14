@@ -1,43 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
-<html>
-<head>
-     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Latest Scores</title>
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
-    <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
-    />
-    <link
-            href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
-            rel="stylesheet"
-    />
+{% block content %}
 
-</head>
-
-
-<body class="body">
-<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar nav-color sticky-top ">
-    <span class="navbar-brand navbar-text inline-title text-white p-2">سوال پیچ </span>
-    <ul class="navbar-nav ml-md-auto flex-row-reverse">
-        <li class="nav-item">
-            <a class="nav-link " href="/">خانه </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="participation">
-                شرکت در چالش
-                <span class="sr-only">(current)</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/challenges/prime">چالش اول</a>
-        </li>
-    </ul>
-</header>
 
 <h1 class="header text-center font-weight-bold ">چگونه شروع کنیم؟ </h1>
 <h2 class="step-challenge text-right font-weight-bold ">گام اول </h2>
@@ -128,5 +92,4 @@
     بخونید و در چالش شرکت کنید، با هم میتونیم
     کلی چیز جدید یاد بگیریم و از زمانی که داریم استفاده مناسب بکنیم.‌
 </p>
-</body>
-</html>
+{% endblock %}
