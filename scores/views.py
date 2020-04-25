@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views import View
-from django_mysql.models.functions import JSONExtract
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import UpdateModelMixin
@@ -9,9 +8,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from scores.models import Score, Round
+from scores.score_processor import process, prepare_scores
 from scores.serializers import ScoreSerializer, RoundSerializer
-from scores.util import convert_ms_to_minutes
-import time
 
 
 class RoundView(APIView):
@@ -44,22 +42,16 @@ class ScoreView(APIView):
     def post(self, request):
         serializer = ScoreSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            score = serializer.save()
+            processed_score = process(score)
+            processed_score.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ScoreTableView(View):
     def get(self, request):
-        latest_round = Round.objects.filter(state='FINISHED').last()
-        if latest_round:
-            time_passed_from_last_run = convert_ms_to_minutes((time.time() - latest_round.updated.timestamp()) * 1000)
-            latest_scores = Score.objects.filter(round_id=latest_round.id).order_by(
-                JSONExtract('result', '$.run_result.duration').asc(nulls_last=True)
-            ).all()
-        else:
-            time_passed_from_last_run = 0
-            latest_scores = []
+        latest_scores, time_passed_from_last_run = prepare_scores('prime')
 
         return render(request, 'scores.html',
                       {'scores': latest_scores, 'time_passed_from_last_run': time_passed_from_last_run})
@@ -74,6 +66,14 @@ class ScoreDetailView(APIView):
 class PrimeChallengeView(View):
     def get(self, request):
         return render(request, 'challenges/prime.html')
+
+
+class CountmeChallengeView(View):
+    def get(self, request):
+        latest_scores, time_passed_from_last_run = prepare_scores('countme')
+
+        return render(request, 'challenges/countme.html',
+                      {'scores': latest_scores, 'time_passed_from_last_run': time_passed_from_last_run})
 
 
 class ParticipationView(View):
