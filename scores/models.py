@@ -15,5 +15,6 @@ class Score(Model):
     nickname = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     result = JSONField()
+    main_indicator = models.FloatField(default=0)
     state = models.CharField(max_length=30, choices=[('PASSED', 'PASSED'), ('FAILED', 'FAILED')])
     round = models.ForeignKey(to=Round, on_delete=models.CASCADE)
