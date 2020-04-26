@@ -1,7 +1,7 @@
 import json
 import time
 
-from django_mysql.models.functions import JSONExtract
+from django.db.models import F
 
 from scores.models import Score, Round
 from scores.util import convert_ms_to_minutes
@@ -14,6 +14,8 @@ def process(score: Score) -> Score:
 
 
 def process_countme(score: Score) -> Score:
+    if score.state == 'FAILED':
+        return score
     metrics_str = score.result.get('metrics', {}).get('stdout', {})
     metrics_json = json.loads(metrics_str)
     status_codes = metrics_json.get('status_codes', {})
@@ -25,8 +27,14 @@ def process_countme(score: Score) -> Score:
             score.state = 'FAILED'
 
     if score.state != 'FAILED':
-        p95_latency_ns = metrics_json.get('latencies', {}).get('95th', 999999999)
+        validation_result = metrics_json.get('validation_result', {})
+        if validation_result.get('status', ) != 'SUCCEEED':
+            score.state = 'FAILED'
+            score.reason = validation_result.get('reason', 'UNKNOWN REASON')
+    if score.state != 'FAILED':
+        p95_latency_ns = metrics_json.get('latencies', {}).get('99th', 999999999)
         score.main_indicator = p95_latency_ns / 1_000_000.0
+
     return score
 
 
@@ -35,7 +43,7 @@ def prepare_scores(challenge_name: str):
     if latest_round:
         time_passed_from_last_run = convert_ms_to_minutes((time.time() - latest_round.updated.timestamp()) * 1000)
         latest_scores = Score.objects.filter(round_id=latest_round.id).order_by(
-            JSONExtract('result', '$.run_result.duration').asc(nulls_last=True)
+            F('main_indicator').asc(nulls_last=True)
         ).all()
     else:
         time_passed_from_last_run = 0
