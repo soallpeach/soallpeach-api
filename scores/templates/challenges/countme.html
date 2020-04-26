@@ -50,7 +50,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nickname</th>
                 <th scope="col">Status</th>
-                <th scope="col">95th Percentile</th>
+                <th scope="col">99th Percentile</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -75,7 +75,7 @@
                     </td>
                     <td>
                         {% if score.state == 'FAILED' %}
-                            {{ score.result.message }}
+                            {{ score.reason }}
                         {% elif score.state == 'PASSED' %}
                             {{ score.main_indicator }}
                         {% endif %}
