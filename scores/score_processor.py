@@ -15,6 +15,11 @@ def process(score: Score) -> Score:
 
 
 def process_countme(score: Score) -> Score:
+    build_code = score.result.get('build', {}).get('code', 0)
+    if build_code != 0:
+        score.state = 'FAILED'
+        score.reason = 'Error in building the image'
+
     if score.state == 'FAILED':
         return score
     metrics_str = score.result.get('metrics', {}).get('stdout', '{}')
@@ -50,6 +55,7 @@ def prepare_scores_old(challenge_name: str):
         time_passed_from_last_run = 0
         latest_scores = []
     return latest_scores, time_passed_from_last_run
+
 
 def prepare_scores(challenge_name: str):
     latest_round = Round.objects.filter(challenge_name=challenge_name, state='FINISHED').last()
