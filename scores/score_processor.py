@@ -17,7 +17,7 @@ def process(score: Score) -> Score:
 def process_countme(score: Score) -> Score:
     if score.state == 'FAILED':
         return score
-    metrics_str = score.result.get('metrics', {}).get('stdout', {})
+    metrics_str = score.result.get('metrics', {}).get('stdout', '{}')
     metrics_json = json.loads(metrics_str)
     status_codes = metrics_json.get('status_codes', {})
     if len(status_codes) != 1:
