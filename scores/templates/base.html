@@ -1,12 +1,13 @@
 {% load static %}
 {% url 'home' as home_url %}
 {% url 'prime' as prime_url %}
+{% url 'countme' as countme_url %}
 {% url 'participation' as participation_url %}
 <html>
 <head>
-     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Latest Scores</title>
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
     <link
@@ -24,20 +25,23 @@
 <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar nav-color sticky-top">
     <span class="navbar-brand navbar-text inline-title text-white p-2">سوال پیچ </span>
     <ul class="navbar-nav ml-md-auto flex-row-reverse">
-        <li class="nav-item {% if request.path == home_url %} active {%endif%}">
-            <a class="nav-link " href="{{home_url}}">خانه </a>
+        <li class="nav-item {% if request.path == home_url %} active {% endif %}">
+            <a class="nav-link " href="{{ home_url }}">خانه </a>
         </li>
-        <li class="nav-item {% if request.path == participation_url %} active {%endif%}">
-            <a class="nav-link " href="{{participation_url}}">
+        <li class="nav-item {% if request.path == participation_url %} active {% endif %}">
+            <a class="nav-link " href="{{ participation_url }}">
                 شرکت در چالش
             </a>
         </li>
-        <li class="nav-item {% if request.path == prime_url %} active {%endif%}">
-            <a class="nav-link " href="{{prime_url}}">چالش اول</a>
+        <li class="nav-item {% if request.path == prime_url %} active {% endif %}">
+            <a class="nav-link " href="{{ prime_url }}">چالش اعداد اول</a>
+        </li>
+        <li class="nav-item {% if request.path == countme_url %} active {% endif %}">
+            <a class="nav-link " href="{{ countme_url }}">چالش من رو بشمار</a>
         </li>
     </ul>
 </header>
 {% block content %}
-{% endblock%}
+{% endblock %}
 </body>
 </html>
