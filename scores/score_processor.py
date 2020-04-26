@@ -2,6 +2,7 @@ import json
 import time
 
 from django.db.models import F
+from django_mysql.models.functions import JSONExtract
 
 from scores.models import Score, Round
 from scores.util import convert_ms_to_minutes
