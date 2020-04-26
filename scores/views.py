@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from scores.models import Score, Round
-from scores.score_processor import process, prepare_scores
+from scores.score_processor import process, prepare_scores, prepare_scores_old
 from scores.serializers import ScoreSerializer, RoundSerializer
 
 
@@ -51,7 +51,7 @@ class ScoreView(APIView):
 
 class ScoreTableView(View):
     def get(self, request):
-        latest_scores, time_passed_from_last_run = prepare_scores('prime')
+        latest_scores, time_passed_from_last_run = prepare_scores_old('prime')
 
         return render(request, 'scores.html',
                       {'scores': latest_scores, 'time_passed_from_last_run': time_passed_from_last_run})

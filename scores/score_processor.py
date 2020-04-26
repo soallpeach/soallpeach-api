@@ -38,6 +38,18 @@ def process_countme(score: Score) -> Score:
     return score
 
 
+def prepare_scores_old(challenge_name: str):
+    latest_round = Round.objects.filter(challenge_name=challenge_name, state='FINISHED').last()
+    if latest_round:
+        time_passed_from_last_run = convert_ms_to_minutes((time.time() - latest_round.updated.timestamp()) * 1000)
+        latest_scores = Score.objects.filter(round_id=latest_round.id).order_by(
+            JSONExtract('result', '$.run_result.duration').asc(nulls_last=True)
+        ).all()
+    else:
+        time_passed_from_last_run = 0
+        latest_scores = []
+    return latest_scores, time_passed_from_last_run
+
 def prepare_scores(challenge_name: str):
     latest_round = Round.objects.filter(challenge_name=challenge_name, state='FINISHED').last()
     if latest_round:
