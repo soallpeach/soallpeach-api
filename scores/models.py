@@ -1,3 +1,5 @@
+from collections import namedtuple
+
 from django.db import models
 from django_mysql.models import JSONField, Model
 
@@ -19,3 +21,21 @@ class Score(Model):
     main_indicator = models.FloatField(default=None, null=True)
     state = models.CharField(max_length=30, choices=[('PASSED', 'PASSED'), ('FAILED', 'FAILED')])
     round = models.ForeignKey(to=Round, on_delete=models.CASCADE)
+
+    @property
+    def commit_info(self):
+        CommitInfo = namedtuple("CommitInfo", "repository_url hash subject repo_type")
+        result = dict(self.result)
+        commit_info = result.get('commit_info')
+        if commit_info is None:
+            return None
+        repo_url = str(commit_info['repository_url']).lower()
+        if 'github' in repo_url:
+            commit_info['repo_type'] = "github"
+        elif 'gitlab' in repo_url:
+            commit_info['repo_type'] = "gitlab"
+        elif 'bitbucket' in repo_url:
+            commit_info['repo_type'] = "bitbucket"
+        else:
+            commit_info['repo_type'] = "unknown"
+        return CommitInfo(**commit_info)
