@@ -5,7 +5,8 @@
     <h1 class="header text-center font-weight-bold ">من رو بشمار</h1>
     <div>
         <p class="paragraph-center text-right">
-            هدف اصلی این چالش آشنا کردن شرکت‌کننده‌ها با مفاهیم پایه http و همینطور مقایسه ویژگی زبان‌ها و فریمورک‌های مختلف برا حل کردن یه مساله به نظر پیش پا افتاده است.
+            هدف اصلی این چالش آشنا کردن شرکت‌کننده‌ها با مفاهیم پایه http و همینطور مقایسه ویژگی زبان‌ها و فریمورک‌های
+            مختلف برا حل کردن یه مساله به نظر پیش پا افتاده است.
             کاری که برای شرکت در این چالش نیازه که انجام بدید پیاده سازی دو http endpoint ساده است.
             یکی از این endpoint ها وظیفه‌اش دریافت عدد و جمع اون با اعدادیه که تا به حال دریافت کرده و وظیقه endpoint
             دیگه برگردوندون مجموع کلی اعدادی است که تا به حال این سرویس دریافت کرده است.
@@ -70,8 +71,8 @@
         این جدول آخرین بار،
 
 
-            {{ time_passed_from_last_run }}
-            دقیقه
+        {{ time_passed_from_last_run }}
+        دقیقه
         </b>
         گذشته بروزرسانی شده است.
     </p>
@@ -93,7 +94,18 @@
                 <tr>
                     <td>{{ forloop.counter }} </td>
                     <td>
-                        {{ score.nickname }}
+                        <p style="vertical-align: middle">
+                            {% if score.commit_info %}
+                                <a href="{{ score.commit_info.repository_url }}" target="_blank" rel="nofollow">
+                                    <img width="24" height="24"
+                                         src="{% static 'images/repo_icons' %}/{{ score.commit_info.repo_type }}.png">
+                                </a>
+                            {% else %}
+                                <img width="24" height="24"
+                                         src="{% static 'images/repo_icons/unknown.png' %}"/>
+                            {% endif %}
+                            {{ score.nickname }}
+                        </p>
                     </td>
                     <td>
                         {% if score.state == 'PASSED' %}
@@ -114,7 +126,19 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="/scores/{{ score.id }}" style="color: cyan">Details</a>
+                        <a
+                                href="/scores/{{ score.id }}"
+                                style="color: cyan"
+
+                            {% if score.commit_info %}
+                                title="#{{ score.commit_info.hash|slice:":7" }}: {{ score.commit_info.subject|truncatewords:4 }}">
+                                {% else %}
+                                title="Commit info is not available">
+                                {% endif %}
+
+
+                            Details
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
