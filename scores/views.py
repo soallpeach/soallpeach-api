@@ -73,7 +73,7 @@ class CountmeChallengeView(View):
         latest_scores, time_passed_from_last_run = prepare_scores('countme')
 
         return render(request, 'challenges/countme.html',
-                      {'scores': latest_scores, 'time_passed_from_last_run': time_passed_from_last_run})
+                      {'scores': latest_scores, 'base_score': latest_scores[0]['main_indicator'], 'time_passed_from_last_run': time_passed_from_last_run})
 
 
 class ParticipationView(View):

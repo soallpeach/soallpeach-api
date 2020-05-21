@@ -84,6 +84,7 @@
                 <th scope="col">Nickname</th>
                 <th scope="col">Status</th>
                 <th scope="col">99th Percentile</th>
+                <th scope="col">%</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -111,6 +112,14 @@
                             {{ score.reason }}
                         {% elif score.state == 'PASSED' %}
                             {{ score.main_indicator }}
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if score.state == 'PASSED' %}
+                        <progress max="100" value="{% widthratio score.main_indicator base_score 100 %}"></progress>
+                        {% else %}
+                        <progress max="100" value="0"></progress>
                         {% endif %}
                     </td>
                     <td>
